@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h4>Shop Our Collection</h4>
+        <h3>Shop Our Collection</h3>
         <ul className="products">
           {products.map((product) => (
             <li key={product.title}>
@@ -29,6 +29,13 @@ export default function Home() {
                 height={500}
                 width={500}
               />
+              <div className={styles.product_text}>
+                <h4>{product.title}</h4>
+                <h5>${product.price}</h5>
+                <button>
+                  <span>+</span> Add to Cart
+                </button>
+              </div>
             </li>
           ))}
         </ul>
