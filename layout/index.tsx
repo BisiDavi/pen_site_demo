@@ -5,9 +5,10 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import styles from "@/styles/Home.module.css";
 import useCart from "@/hooks/useCart";
+import { cartType } from "@/types";
 
 export default function Layout({ children }: PropsWithChildren) {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<Array<cartType>>([]);
   const { CartContext } = useCart();
 
   return (
