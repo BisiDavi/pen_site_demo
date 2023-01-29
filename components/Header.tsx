@@ -1,3 +1,4 @@
+import ShoppingCart from "@/public/cart";
 import Image from "next/image";
 
 export default function Header() {
@@ -5,6 +6,9 @@ export default function Header() {
     <>
       <header className="header">
         <Image alt="logo" src="/logo.webp" height={100} width={300} />
+        <div className="cart">
+          <ShoppingCart />
+        </div>
       </header>
       <style jsx>
         {`
@@ -16,6 +20,14 @@ export default function Header() {
             justify-content: center;
             align-items: center;
             box-shadow: 0px 5px 15px rgb(0 0 0 / 15%);
+            position: relative;
+          }
+          .cart {
+            position: absolute;
+            right: 40px;
+            height: 20px;
+            width: 40px;
+            top: 25px;
           }
         `}
       </style>
