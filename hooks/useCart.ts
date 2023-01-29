@@ -8,7 +8,5 @@ export default function useCart() {
     setCart: Dispatch<SetStateAction<cartType[]>>;
   } | null>(null);
 
-   
-
   return { CartContext };
 }

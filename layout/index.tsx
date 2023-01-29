@@ -4,13 +4,14 @@ import type { PropsWithChildren } from "react";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import useCart from "@/hooks/useCart";
 import { cartType } from "@/types";
 import styles from "@/styles/Home.module.css";
+import CartContext from "@/context/cartContext";
 
 export default function Layout({ children }: PropsWithChildren) {
   const [cart, setCart] = useState<Array<cartType>>([]);
-  const { CartContext } = useCart();
+
+  console.log("cart", cart);
 
   return (
     <CartContext.Provider value={{ cart, setCart }}>
