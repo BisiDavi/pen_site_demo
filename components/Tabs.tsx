@@ -35,9 +35,12 @@ export default function Tabs({ tab1, tab2 }: Props) {
             width: 800px;
             height: 60px;
             box-shadow: 0px 5px 15px rgb(0 0 0 / 15%);
-            padding: 0px 40px;
+            padding: 5px 40px;
             margin: 40px auto;
             border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
           }
           .active {
             background-color: green;

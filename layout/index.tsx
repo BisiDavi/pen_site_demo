@@ -4,9 +4,9 @@ import type { PropsWithChildren } from "react";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import CartContext from "@/context/cartContext";
 import { cartType } from "@/types";
 import styles from "@/styles/Home.module.css";
-import CartContext from "@/context/cartContext";
 
 export default function Layout({ children }: PropsWithChildren) {
   const [cart, setCart] = useState<Array<cartType>>([]);

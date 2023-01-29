@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-.main ul {
+.main ul.products {
   display: flex;
   justify-content: space-between;
   margin: auto;
