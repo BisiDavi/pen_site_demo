@@ -1,11 +1,8 @@
-import { useContext } from "react";
-
-import CartContext from "@/context/cartContext";
-import type { cartContextType, cartType, productType } from "@/types";
+import useCartContext from "@/hooks/useCartContext";
+import type { cartType, productType } from "@/types";
 
 export default function useCart() {
-  const { cart, setCart } =
-    useContext<Extract<cartContextType | null, cartContextType>>(CartContext);
+  const { cart, setCart } = useCartContext();
 
   function addToCart(product: productType) {
     const { title, image, price } = product;
