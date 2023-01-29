@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import type { cartType, productType } from "@/types";
-import styles from "@/styles/Home.module.css";
 import useCart from "@/hooks/useCart";
+import type { productType } from "@/types";
+import styles from "@/styles/Home.module.css";
 
 interface Props {
   product: productType;

@@ -1,9 +1,11 @@
 import Image from "next/image";
-import ShoppingCart from "@/public/Cart";
+
 import useCartContext from "@/hooks/useCartContext";
+import ShoppingCart from "@/public/Cart";
 
 export default function Header() {
   const { cart } = useCartContext();
+
   return (
     <>
       <header className="header">
