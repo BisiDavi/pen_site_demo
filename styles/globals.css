@@ -5,3 +5,8 @@
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }
+
+body {
+  padding: 0px;
+  margin: 0px;
+}

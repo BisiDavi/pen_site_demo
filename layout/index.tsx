@@ -3,6 +3,7 @@ import type { PropsWithChildren } from "react";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import styles from "@/styles/Home.module.css";
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
@@ -17,7 +18,7 @@ export default function Layout({ children }: PropsWithChildren) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
       <Footer />
     </div>
   );

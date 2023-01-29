@@ -1,24 +1,12 @@
-import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
 import products from "@/json/products.json";
-
-const inter = Inter({ subsets: ["latin"] });
+import Layout from "@/layout";
+import styles from "@/styles/Home.module.css";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Welcome to GetthisGreen </title>
-        <meta
-          name="description"
-          content="Buy classic pens built for elegance"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={styles.main}>
+      <Layout>
         <h3>Shop Our Collection</h3>
         <ul className="products">
           {products.map((product) => (
@@ -39,7 +27,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
-      </main>
+      </Layout>
     </>
   );
 }
