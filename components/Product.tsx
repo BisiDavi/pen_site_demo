@@ -1,31 +1,16 @@
 import Image from "next/image";
-import { useContext } from "react";
 
-import CartContext from "@/context/cartContext";
+import type { cartType, productType } from "@/types";
 import styles from "@/styles/Home.module.css";
-import type { productType } from "@/types";
+import useCart from "@/hooks/useCart";
 
 interface Props {
   product: productType;
 }
 
 export default function Product({ product }: Props) {
-  const { cart, setCart } = useContext(CartContext);
   const { title, image, price } = product;
-
-  console.log("cartContext", cart);
-
-  function addToCart() {
-    setCart([
-      ...cart,
-      {
-        title,
-        image,
-        quantity: 1,
-        price,
-      },
-    ]);
-  }
+  const { addToCart } = useCart();
 
   return (
     <li>
@@ -33,7 +18,7 @@ export default function Product({ product }: Props) {
       <div className={styles.product_text}>
         <h4>{title}</h4>
         <h5>${price}</h5>
-        <button onClick={addToCart}>
+        <button onClick={() => addToCart(product)}>
           <span>+</span> Add to Cart
         </button>
       </div>

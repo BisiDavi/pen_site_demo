@@ -1,10 +1,6 @@
 import { createContext } from "react";
-import type { Dispatch, SetStateAction } from "react";
-import { cartType } from "@/types";
+import { cartContextType } from "@/types";
 
-const CartContext = createContext<{
-  cart: Array<cartType>;
-  setCart: Dispatch<SetStateAction<cartType[]>>;
-} | any>(null);
+const CartContext = createContext<cartContextType | null>(null);
 
 export default CartContext;
