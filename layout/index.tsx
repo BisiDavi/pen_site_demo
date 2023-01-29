@@ -1,11 +1,12 @@
 import Head from "next/head";
-import { PropsWithChildren, useState } from "react";
+import { useState } from "react";
+import type { PropsWithChildren } from "react";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import styles from "@/styles/Home.module.css";
 import useCart from "@/hooks/useCart";
 import { cartType } from "@/types";
+import styles from "@/styles/Home.module.css";
 
 export default function Layout({ children }: PropsWithChildren) {
   const [cart, setCart] = useState<Array<cartType>>([]);

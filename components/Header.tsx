@@ -1,12 +1,19 @@
 import Image from "next/image";
+import { useContext } from "react";
+import useCart from "@/hooks/useCart";
 import ShoppingCart from "@/public/Cart";
 
 export default function Header() {
+  const { CartContext } = useCart();
+  const cartContext = useContext(CartContext);
   return (
     <>
       <header className="header">
         <Image alt="logo" src="/logo.webp" height={100} width={300} />
         <div className="cart">
+          {cartContext && (
+            <span className="quantity">{cartContext.cart.length}</span>
+          )}
           <ShoppingCart />
         </div>
       </header>
