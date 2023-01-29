@@ -1,5 +1,5 @@
-import ShoppingCart from "@/public/cart";
 import Image from "next/image";
+import ShoppingCart from "@/public/Cart";
 
 export default function Header() {
   return (
