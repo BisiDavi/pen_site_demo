@@ -1,16 +1,13 @@
 import Layout from "@/layout";
-import Product from "@/components/Product";
-import products from "@/json/products.json";
+import Products from "@/components/Products";
+import Tabs from "@/components/Tabs";
+import Checkout from "@/components/Checkout";
 
 export default function Home() {
   return (
     <Layout>
       <h3>Shop Our Collection</h3>
-      <ul className="products">
-        {products.map((product) => (
-          <Product product={product} key={product.title} />
-        ))}
-      </ul>
+      <Tabs tab1={<Products />} tab2={<Checkout />} />
     </Layout>
   );
 }
