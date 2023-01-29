@@ -34,6 +34,20 @@ export default function Header() {
             width: 40px;
             top: 25px;
           }
+          .quantity {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            height: 15px;
+            width: 15px;
+            display: flex;
+            padding: 5px;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -10px;
+            right: 0px;
+          }
         `}
       </style>
     </>

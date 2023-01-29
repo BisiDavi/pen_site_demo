@@ -32,5 +32,3 @@ export default function useCart() {
 
   return { addToCart };
 }
-
-// [{ ...cartProduct[0], quantity: cartProduct[0].quantity + 1 }]
