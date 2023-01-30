@@ -1,5 +1,5 @@
-export function formatPrice(price: number) {
-  const productPrice = price.toFixed(2);
+export function formatPrice(price: any) {
+  const productPrice = price?.toFixed(2);
   return numberWithCommas(productPrice);
 }
 

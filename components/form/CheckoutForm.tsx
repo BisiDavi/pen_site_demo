@@ -4,16 +4,22 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { checkoutFormSchema } from "@/components/form/checkoutform.schema";
 import displayForm from "@/components/form/displayForm";
 import checkoutFormContent from "@/json/checkout.json";
+import useStripePayment from "@/hooks/useStripePayment";
+import useCartContext from "@/hooks/useCartContext";
 
 export default function CheckoutForm() {
   const methods = useForm({
     resolver: yupResolver(checkoutFormSchema),
     mode: "all",
   });
+  const { cart } = useCartContext();
+  const { makePayment } = useStripePayment();
 
   function onSubmit(data: any) {
     console.log("data", data);
+    makePayment(data.email);
   }
+  const disableButton = cart.length > 0 ? false : true;
   return (
     <FormProvider {...methods}>
       <form className="checkoutForm" onSubmit={methods.handleSubmit(onSubmit)}>
@@ -31,7 +37,9 @@ export default function CheckoutForm() {
             </div>
           ))}
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={disableButton}>
+          Submit
+        </button>
       </form>
       <style jsx>
         {`
@@ -66,6 +74,10 @@ export default function CheckoutForm() {
           }
           .checkoutForm button:hover {
             opacity: 0.8;
+          }
+          .checkoutForm button:disabled {
+            background-color: gray;
+            pointer-events: none;
           }
         `}
       </style>

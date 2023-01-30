@@ -1,9 +1,11 @@
 import axios from "axios";
 
-import type { cartType, lineItemsType } from "@/types";
+import type { lineItemsType } from "@/types";
+import useCartContext from "@/hooks/useCartContext";
 
-export default function useStripePayment(cart: cartType[], email: string) {
+export default function useStripePayment() {
   let line_items: Array<lineItemsType> = [];
+  const { cart } = useCartContext();
 
   if (cart) {
     cart.map((item) => {
@@ -18,16 +20,16 @@ export default function useStripePayment(cart: cartType[], email: string) {
         },
         quantity: item.quantity,
       });
-    });   
+    });
   }
-  const emailAddress = email ? { customer_email: email } : "";
 
-  const result = {
-    ...emailAddress,
-    line_items,
-  };
+  async function makePayment(email: string) {
+    const emailAddress = email ? { customer_email: email } : "";
 
-  async function makePayment() {
+    const result = {
+      ...emailAddress,
+      line_items,
+    };
     return await axios
       .post("/api/stripe-server", { ...result })
       .then((response) => {
