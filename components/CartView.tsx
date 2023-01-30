@@ -4,6 +4,7 @@ import useCartContext from "@/hooks/useCartContext";
 import Trash from "@/public/Trash";
 import useCart from "@/hooks/useCart";
 import ShoppingCart from "@/public/Cart";
+import { formatPrice } from "@/utils/formatPrice";
 
 export default function CartView() {
   const { cart } = useCartContext();
@@ -14,43 +15,49 @@ export default function CartView() {
       {cart.length > 0 ? (
         <>
           <ul className="cart">
-            {cart.map((item) => (
-              <li key={item.title}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  height={100}
-                  width={100}
-                />
-                <div className="text-content">
-                  <h4>{item.title}</h4>
-                  <h5>
-                    {item.price} X {item.quantity} = $
-                    {item.quantity * item.price}
-                  </h5>
-                  <div className="control-group">
-                    <div className="controls">
-                      <button
-                        className="add"
-                        onClick={() => updateProductQuantity(item.title, "inc")}
-                      >
-                        +
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button
-                        className="minus"
-                        onClick={() => updateProductQuantity(item.title, "dec")}
-                      >
-                        -
+            {cart.map((item) => {
+              const amount = item.quantity * item.price;
+              return (
+                <li key={item.title}>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    height={100}
+                    width={100}
+                  />
+                  <div className="text-content">
+                    <h4>{item.title}</h4>
+                    <h5>
+                      {item.price} X {item.quantity} = ${formatPrice(amount)}
+                    </h5>
+                    <div className="control-group">
+                      <div className="controls">
+                        <button
+                          className="add"
+                          onClick={() =>
+                            updateProductQuantity(item.title, "inc")
+                          }
+                        >
+                          <span>+</span>
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button
+                          className="minus"
+                          onClick={() =>
+                            updateProductQuantity(item.title, "dec")
+                          }
+                        >
+                          <span>-</span>
+                        </button>
+                      </div>
+                      <button onClick={() => deleteProduct(item.title)}>
+                        <Trash />
                       </button>
                     </div>
-                    <button onClick={() => deleteProduct(item.title)}>
-                      <Trash />
-                    </button>
                   </div>
-                </div>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ul>
         </>
       ) : (
@@ -141,7 +148,7 @@ export default function CartView() {
 
           .controls button {
             font-size: 40px;
-            height: 40px;
+            height: 35px;
             width: 40px;
             display: flex;
             align-items: center;
@@ -151,6 +158,12 @@ export default function CartView() {
 
           .controls .add {
             background-color: green;
+          }
+
+          .controls button span {
+            font-size: 30px;
+            padding: 0px;
+            margin-top: -4px;
           }
 
           .controls .minus {

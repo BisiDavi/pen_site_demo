@@ -31,14 +31,16 @@ export default function useCart() {
   }
 
   function updateProductQuantity(title: string, type: "inc" | "dec") {
-    const productIndex = cart.findIndex((item) => item.title === title);
+    const cartTemp = [...cart];
+    const productIndex = cartTemp.findIndex((item) => item.title === title);
     let productQuantity = cart[productIndex].quantity;
+
     if (type === "inc") {
       cart[productIndex].quantity += 1;
     } else if (type === "dec" && productQuantity > 1) {
       cart[productIndex].quantity -= 1;
     }
-    return setCart(cart);
+    setCart(cartTemp);
   }
 
   function deleteProduct(title: string) {
