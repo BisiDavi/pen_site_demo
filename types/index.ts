@@ -31,11 +31,23 @@ export type addressType = {
 export type addressContextType = {
   address: addressType;
   setAddress: Dispatch<SetStateAction<addressType>>;
-};
+};  
 
 export type formElementType = {
   name: string;
   label: string;
   contentType: string;
   type: string;
+};
+
+export type lineItemsType = {
+  price_data: {
+    currency: string;
+    product_data: {
+      name: string;
+      images: string[];
+    };
+    unit_amount: number;
+  };
+  quantity: number;
 };

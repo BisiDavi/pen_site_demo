@@ -7,7 +7,7 @@ export default async function handler(req: any, res: any) {
         const sessionData = {
           ...req.body,
           mode: "payment",
-          success_url: `${req.headers.origin}/payment-successful/session?id={CHECKOUT_SESSION_ID}`,
+          success_url: `${req.headers.origin}/payment-successful?session-id={CHECKOUT_SESSION_ID}`,
           cancel_url: `${req.headers.origin}/payment-error/`,
         };
         const session = await stripe.checkout.sessions.create(sessionData);
