@@ -1,4 +1,5 @@
 import { cartType, lineItemsType } from "@/types";
+import axios from "axios";
 
 export default async function makePayment(email: string, cart: cartType[]) {
   const emailAddress = email ? { customer_email: email } : "";
@@ -26,13 +27,10 @@ export default async function makePayment(email: string, cart: cartType[]) {
   };
   console.log("result", result);
 
-  return fetch("/api/make-payment-stripe", {
-    method: "POST",
-    body: JSON.stringify(result),
-  })
-    .then((response) => response.json())
+  return axios
+    .post("/api/make-payment-stripe", { ...result })
     .then((response) => {
       console.log("response stripe", response);
-      // window.location.href = response?.data?.session.url;
+      window.location.href = response?.data?.session.url;
     });
 }
