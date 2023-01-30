@@ -5,7 +5,7 @@ import ShoppingCart from "@/public/Cart";
 import Link from "next/link";
 
 export default function Header() {
-  const { cart } = useCartContext();
+  const { cart, cartContext } = useCartContext();
 
   return (
     <>
@@ -14,7 +14,9 @@ export default function Header() {
           <Image alt="logo" src="/logo.webp" height={100} width={300} />
         </Link>
         <div className="cart">
-          {cart.length > 0 && <span className="quantity">{cart.length}</span>}
+          {cartContext !== null && cart.length > 0 && (
+            <span className="quantity">{cart.length}</span>
+          )}
           <ShoppingCart />
         </div>
       </header>

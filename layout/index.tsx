@@ -11,8 +11,6 @@ import styles from "@/styles/Home.module.css";
 export default function Layout({ children }: PropsWithChildren) {
   const [cart, setCart] = useState<Array<cartType>>([]);
 
-  console.log("cart", cart);
-
   return (
     <CartContext.Provider value={{ cart, setCart }}>
       <Head>
