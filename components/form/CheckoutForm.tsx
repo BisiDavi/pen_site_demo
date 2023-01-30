@@ -11,7 +11,7 @@ export default function CheckoutForm() {
     mode: "all",
   });
 
-  function onSubmit(data) {
+  function onSubmit(data: any) {
     console.log("data", data);
   }
   return (
@@ -31,9 +31,7 @@ export default function CheckoutForm() {
             </div>
           ))}
         </div>
-        <button className="submit" type="submit">
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
       <style jsx>
         {`
@@ -52,7 +50,7 @@ export default function CheckoutForm() {
             width: 100%;
           }
           .elements {
-            margin-bottom: 20px;
+            margin-bottom: 0px;
           }
           .checkoutForm button {
             display: flex;

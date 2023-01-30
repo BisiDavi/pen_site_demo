@@ -5,7 +5,7 @@ export const checkoutFormSchema = yup.object({
   email: yup
     .string()
     .email("Enter a vaild email address")
-    .required("Full Name is required"),
+    .required("Email is required"),
   address: yup.string().required("Address is required"),
   phoneNumber: yup.string().required("Phone number is required"),
   city: yup.string().required("City is required"),

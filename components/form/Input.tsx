@@ -18,9 +18,7 @@ export default function Input({ content }: Props) {
           placeholder={content.label}
           {...register(content.name)}
         />
-        <p className="text-red-500 p-0  text-xs">
-          {errors[content.name]?.message}
-        </p>
+        <p>{errors[content.name]?.message}</p>
       </div>
       <style jsx>
         {`
@@ -33,6 +31,11 @@ export default function Input({ content }: Props) {
           .input input {
             padding: 0px 10px;
             height: 30px;
+          }
+          .input p {
+            margin: 0px;
+            font-size: 14px;
+            color: red;
           }
         `}
       </style>

@@ -1,3 +1,4 @@
+import { useFormContext } from "react-hook-form";
 import countries from "@/json/countries.json";
 import type { formElementType } from "@/types";
 
@@ -6,10 +7,14 @@ interface Props {
 }
 
 export default function SelectCountry({ content }: Props) {
+  const {
+    register,
+    formState: { errors },
+  }: any = useFormContext();
   return (
     <>
       <div className="select">
-        <select name={content.name}>
+        <select name={content.name} {...register(content.name)}>
           <option>Select Country</option>
           {countries.map((country) => (
             <option key={country.Iso2} value={country.Iso2}>
@@ -17,6 +22,7 @@ export default function SelectCountry({ content }: Props) {
             </option>
           ))}
         </select>
+        <p>{errors[content.name]?.message}</p>
       </div>
       <style jsx>
         {`
