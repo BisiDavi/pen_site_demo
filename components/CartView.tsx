@@ -8,10 +8,11 @@ import { formatPrice } from "@/utils/formatPrice";
 
 export default function CartView() {
   const { cart } = useCartContext();
-  const { deleteProduct, updateProductQuantity } = useCart();
+  const { deleteProduct, getTotal, updateProductQuantity } = useCart();
+  const total = getTotal();
 
   return (
-    <>
+    <div className="cart-view">
       {cart.length > 0 ? (
         <>
           <ul className="cart">
@@ -59,6 +60,16 @@ export default function CartView() {
               );
             })}
           </ul>
+          <div className="total-view">
+            <div className="total">
+              <h4>Total</h4>
+              <h4>${formatPrice(total)} </h4>
+            </div>
+            <div className="shipping">
+              <h4>Shipping</h4>
+              <h4>${formatPrice(0)}</h4>
+            </div>
+          </div>
         </>
       ) : (
         <div className="empty-cart">
@@ -173,8 +184,17 @@ export default function CartView() {
           .controls button:hover {
             opacity: 0.8;
           }
+
+          .total-view div {
+            display: flex;
+            justify-content: space-between;
+            margin: 0px;
+          }
+          .total-view div h4 {
+            margin: 10px 0px;
+          }
         `}
       </style>
-    </>
+    </div>
   );
 }

@@ -43,6 +43,16 @@ export default function useCart() {
     setCart(cartTemp);
   }
 
+  function getTotal() {
+    const total: any = cart.reduce((a, b): any => {
+      const amount = a.price * a.quantity;
+      const amount2 = b.price * b.quantity;
+      const sumTotal = amount + amount2;
+      return sumTotal;
+    });
+    return total;
+  }
+
   function deleteProduct(title: string) {
     const productIndex = cart.findIndex((item) => item.title === title);
     const cartTemp = [...cart];
@@ -51,5 +61,5 @@ export default function useCart() {
     setCart(cartTemp);
   }
 
-  return { addToCart, deleteProduct, updateProductQuantity };
+  return { addToCart, deleteProduct, updateProductQuantity, getTotal };
 }
