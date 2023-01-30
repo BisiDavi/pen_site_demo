@@ -4,8 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { checkoutFormSchema } from "@/components/form/checkoutform.schema";
 import displayForm from "@/components/form/displayForm";
 import checkoutFormContent from "@/json/checkout.json";
-import useStripePayment from "@/hooks/useStripePayment";
 import useCartContext from "@/hooks/useCartContext";
+import makePayment from "@/utils/makePayment";
 
 export default function CheckoutForm() {
   const methods = useForm({
@@ -13,11 +13,10 @@ export default function CheckoutForm() {
     mode: "all",
   });
   const { cart } = useCartContext();
-  const { makePayment } = useStripePayment();
 
   async function onSubmit(data: any) {
     console.log("data", data);
-    await makePayment(data.email);
+    await makePayment(data.email, cart);
   }
   const disableButton = cart.length > 0 ? false : true;
   return (

@@ -14,7 +14,14 @@ export default function Product({ product }: Props) {
 
   return (
     <li>
-      <Image src={image} alt={title} height={500} width={500} />
+      <Image
+        src={image}
+        alt={title}
+        height={500}
+        width={500}
+        placeholder="blur"
+        blurDataURL={image}
+      />
       <div className={styles.product_text}>
         <h4>{title}</h4>
         <h5>${price}</h5>

@@ -28,11 +28,6 @@ export type addressType = {
   country: string;
 };
 
-export type addressContextType = {
-  address: addressType;
-  setAddress: Dispatch<SetStateAction<addressType>>;
-};  
-
 export type formElementType = {
   name: string;
   label: string;

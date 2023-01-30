@@ -1,13 +1,13 @@
 [
   {
     "title": "MIDNIGHT BLACK",
-    "image": "/black_pen.webp",
+    "image": "https://res.cloudinary.com/verrb-inc/image/upload/v1675065816/black_pen_whycyr.webp",
     "description": "",
     "price": 70
   },
   {
     "title": "SILVER",
-    "image": "/silver_pen.webp",
+    "image": "https://res.cloudinary.com/verrb-inc/image/upload/v1675065817/silver_pen_wayd5w.webp",
     "description": "",
     "price": 50
   }

@@ -31,11 +31,21 @@ export default function useStripePayment() {
       line_items,
     };
     console.log("result", result);
-    return await axios
-      .post("/api/make-payment-stripe", { ...result })
+    // return await axios
+    //   .post("/api/make-payment-stripe", { ...result })
+    //   .then((response) => {
+    //     console.log("response", response);
+    //     window.location.href = response.data.session.url;
+    //   });
+
+    return fetch("/api/make-payment-stripe", {
+      method: "POST",
+      body: JSON.stringify(result),
+    })
+      .then((response) => response.json())
       .then((response) => {
-        console.log("response", response);
-        window.location.href = response.data.session.url;
+        console.log("response stripe", response);
+        // window.location.href = response?.data?.session.url;
       });
   }
 
