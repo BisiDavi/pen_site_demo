@@ -1,9 +1,13 @@
 import useCartContext from "@/hooks/useCartContext";
 import Image from "next/image";
 import Trash from "@/public/Trash";
+import useCart from "@/hooks/useCart";
 
 export default function CartView() {
   const { cart } = useCartContext();
+  const { deleteProduct, updateProductQuantity } = useCart();
+
+  console.log("cart", cart);
 
   return (
     <>
@@ -18,11 +22,21 @@ export default function CartView() {
               </h5>
               <div className="control-group">
                 <div className="controls">
-                  <button className="add">+</button>
+                  <button
+                    className="add"
+                    onClick={() => updateProductQuantity(item.title, "inc")}
+                  >
+                    +
+                  </button>
                   <span>{item.quantity}</span>
-                  <button className="minus">-</button>
+                  <button
+                    className="minus"
+                    onClick={() => updateProductQuantity(item.title, "dec")}
+                  >
+                    -
+                  </button>
                 </div>
-                <button>
+                <button onClick={() => deleteProduct(item.title)}>
                   <Trash />
                 </button>
               </div>

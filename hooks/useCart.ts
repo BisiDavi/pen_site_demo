@@ -30,5 +30,24 @@ export default function useCart() {
     setCart(cartValue);
   }
 
-  return { addToCart };
+  function updateProductQuantity(title: string, type: "inc" | "dec") {
+    const productIndex = cart.findIndex((item) => item.title === title);
+    let productQuantity = cart[productIndex].quantity;
+    if (type === "inc") {
+      cart[productIndex].quantity += 1;
+    } else if (type === "dec" && productQuantity > 1) {
+      cart[productIndex].quantity -= 1;
+    }
+    return setCart(cart);
+  }
+
+  function deleteProduct(title: string) {
+    const productIndex = cart.findIndex((item) => item.title === title);
+    const cartTemp = [...cart];
+    cartTemp.splice(productIndex, 1);
+    console.log("cartTemp", cartTemp);
+    setCart(cartTemp);
+  }
+
+  return { addToCart, deleteProduct, updateProductQuantity };
 }

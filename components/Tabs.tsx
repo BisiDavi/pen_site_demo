@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useCartContext from "@/hooks/useCartContext";
 
 interface Props {
   tab1: JSX.Element;
@@ -7,9 +8,11 @@ interface Props {
 
 export default function Tabs({ tab1, tab2 }: Props) {
   const [tabState, setTabState] = useState("Products");
+  const { cart } = useCartContext();
+
   return (
     <>
-      <ul className="header">
+      <ul className="tabs">
         {["Products", "Checkout"].map((title) => {
           const activeTab = title === tabState ? "active" : "not-active";
           return (
@@ -18,7 +21,7 @@ export default function Tabs({ tab1, tab2 }: Props) {
               className={activeTab}
               onClick={() => setTabState(title)}
             >
-              {title}
+              {title} {title === "Checkout" && <span>{cart.length}</span>}
             </li>
           );
         })}
@@ -30,8 +33,8 @@ export default function Tabs({ tab1, tab2 }: Props) {
       )}
       <style jsx>
         {`
-          .header {
-            font-size: 30px;
+          .tabs {
+            font-size: 25px;
             width: 800px;
             height: 60px;
             box-shadow: 0px 5px 15px rgb(0 0 0 / 15%);
@@ -47,6 +50,27 @@ export default function Tabs({ tab1, tab2 }: Props) {
             color: white;
             padding: 4px 15px;
             border-radius: 5px;
+          }
+          .tabs span {
+            font-size: 15px;
+            background-color: red;
+            color: white;
+            height: 25px;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0px 20px;
+            border-radius: 50%;
+          }
+
+          .tabs li {
+            display: flex;
+            align-items: center;
+          }
+
+          .tabs li:hover {
+            background-color: #a6a1a1a8;
           }
         `}
       </style>
