@@ -33,8 +33,9 @@ export type addressContextType = {
   setAddress: Dispatch<SetStateAction<addressType>>;
 };
 
-export type FormElementType = {
+export type formElementType = {
   name: string;
   label: string;
   contentType: string;
+  type: string;
 };

@@ -1,8 +1,8 @@
 import countries from "@/json/countries.json";
-import type { FormElementType } from "@/types";
+import type { formElementType } from "@/types";
 
 interface Props {
-  content: FormElementType;
+  content: formElementType;
 }
 
 export default function SelectCountry({ content }: Props) {

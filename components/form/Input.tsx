@@ -1,14 +1,14 @@
-import type { FormElementType } from "@/types";
+import type { formElementType } from "@/types";
 
-interface Props{
-    input: FormElementType
+interface Props {
+  content: formElementType;
 }
 
-export default function Input({ input }:Props) {
+export default function Input({ content }: Props) {
   return (
     <div className="form-element">
-      <label>{input.label}</label>
-      <input name={input.name} type={input.contentType} />
+      <label>{content.label}</label>
+      <input name={content.name} type={content.contentType} />
     </div>
   );
 }

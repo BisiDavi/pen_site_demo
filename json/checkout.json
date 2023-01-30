@@ -34,7 +34,7 @@
     { "label": "State", "type": "input", "contentType": "text", "name": "state" },
     {
       "label": "Country",
-      "type": "select",
+      "type": "selectCountry",
       "contentType": "text",
       "name": "country"
     }
