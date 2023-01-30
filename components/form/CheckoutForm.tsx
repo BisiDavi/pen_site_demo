@@ -12,13 +12,13 @@ export default function CheckoutForm() {
     resolver: yupResolver(checkoutFormSchema),
     mode: "all",
   });
-  const { cart } = useCartContext();
+  const { cart, cartContext } = useCartContext();
 
   async function onSubmit(data: any) {
-    console.log("data", data);
     await makePayment(data.email, cart);
   }
-  const disableButton = cart.length > 0 ? false : true;
+  const disableButton =
+    cartContext !== null ? (cart.length > 0 ? false : true) : true;
   return (
     <FormProvider {...methods}>
       <form className="checkoutForm" onSubmit={methods.handleSubmit(onSubmit)}>

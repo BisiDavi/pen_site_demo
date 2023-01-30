@@ -12,5 +12,6 @@ export default function useCartContext() {
   return {
     cart,
     setCart,
+    cartContext
   };
 }

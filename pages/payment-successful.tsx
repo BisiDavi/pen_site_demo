@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 
 export default function PaymentSuccessful() {
   const router = useRouter();
-  console.log("router", router);
   return (
     <Layout>
       {router.query.session_id && (
