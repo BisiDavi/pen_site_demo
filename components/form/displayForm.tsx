@@ -5,10 +5,10 @@ import type { formElementType } from "@/types";
 export default function displayForm(formElement: formElementType) {
   switch (formElement.type) {
     case "input": {
-      <Input content={formElement} />;
+      return <Input content={formElement} />;
     }
     case "selectCountry": {
-      <SelectCountry content={formElement} />;
+      return <SelectCountry content={formElement} />;
     }
   }
 }

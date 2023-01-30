@@ -1,12 +1,11 @@
 import CartView from "@/components/CartView";
+import CheckoutForm from "./form/CheckoutForm";
 
 export default function Checkout() {
   return (
     <>
       <div className="checkout">
-        <form>
-          <button>Checkout</button>
-        </form>
+        <CheckoutForm />
         <CartView />
       </div>
       <style jsx>
