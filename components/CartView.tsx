@@ -52,6 +52,7 @@ export default function CartView() {
             flex-direction: column;
             padding: 0px;
             width: 100%;
+            margin: 0px;
           }
 
           .cart li {

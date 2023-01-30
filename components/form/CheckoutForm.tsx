@@ -4,7 +4,7 @@ import checkoutFormContent from "@/json/checkout.json";
 export default function CheckoutForm() {
   return (
     <>
-      <form>
+      <form className="checkoutForm">
         <div className="elements">
           {checkoutFormContent.map((formElementArr, index) => (
             <div
@@ -19,7 +19,7 @@ export default function CheckoutForm() {
             </div>
           ))}
         </div>
-        <button>Checkout</button>
+        <button className="submit">Submit</button>
       </form>
       <style jsx>
         {`
@@ -39,6 +39,21 @@ export default function CheckoutForm() {
           }
           .elements {
             margin-bottom: 20px;
+          }
+          .checkoutForm button {
+            display: flex;
+            margin: auto;
+            padding: 10px 30px;
+            background-color: #3b7ad1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+          }
+          .checkoutForm button:hover {
+            opacity: 0.8;
           }
         `}
       </style>
