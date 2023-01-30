@@ -3,50 +3,80 @@ import Image from "next/image";
 import useCartContext from "@/hooks/useCartContext";
 import Trash from "@/public/Trash";
 import useCart from "@/hooks/useCart";
+import ShoppingCart from "@/public/Cart";
 
 export default function CartView() {
   const { cart } = useCartContext();
   const { deleteProduct, updateProductQuantity } = useCart();
 
-  console.log("cart", cart);
-
   return (
     <>
-      <ul className="cart">
-        {cart.map((item) => (
-          <li key={item.title}>
-            <Image src={item.image} alt={item.title} height={100} width={100} />
-            <div className="text-content">
-              <h4>{item.title}</h4>
-              <h5>
-                {item.price} X {item.quantity} = ${item.quantity * item.price}
-              </h5>
-              <div className="control-group">
-                <div className="controls">
-                  <button
-                    className="add"
-                    onClick={() => updateProductQuantity(item.title, "inc")}
-                  >
-                    +
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    className="minus"
-                    onClick={() => updateProductQuantity(item.title, "dec")}
-                  >
-                    -
-                  </button>
+      {cart.length > 0 ? (
+        <>
+          <ul className="cart">
+            {cart.map((item) => (
+              <li key={item.title}>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  height={100}
+                  width={100}
+                />
+                <div className="text-content">
+                  <h4>{item.title}</h4>
+                  <h5>
+                    {item.price} X {item.quantity} = $
+                    {item.quantity * item.price}
+                  </h5>
+                  <div className="control-group">
+                    <div className="controls">
+                      <button
+                        className="add"
+                        onClick={() => updateProductQuantity(item.title, "inc")}
+                      >
+                        +
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button
+                        className="minus"
+                        onClick={() => updateProductQuantity(item.title, "dec")}
+                      >
+                        -
+                      </button>
+                    </div>
+                    <button onClick={() => deleteProduct(item.title)}>
+                      <Trash />
+                    </button>
+                  </div>
                 </div>
-                <button onClick={() => deleteProduct(item.title)}>
-                  <Trash />
-                </button>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <div className="empty-cart">
+          <div className="cart-icon">
+            <ShoppingCart />
+            <p>Cart is empty</p>
+          </div>
+        </div>
+      )}
       <style jsx>
         {`
+          .cart-icon {
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            flex-direction: column;
+          }
+          .cart-icon p {
+            margin: 0px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            font-family: "Fira Mono", sans-serif;
+          }
           .cart {
             display: flex;
             flex-direction: column;
@@ -61,7 +91,6 @@ export default function CartView() {
             border-bottom: 1px solid #a6a1a1a8;
             padding-bottom: 10px;
             align-items: center;
-            width: 100%;
             padding: 10px;
           }
 
