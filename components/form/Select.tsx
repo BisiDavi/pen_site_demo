@@ -1,6 +1,11 @@
 import countries from "@/json/countries.json";
+import type { FormElementType } from "@/types";
 
-export default function SelectCountry({ content }) {
+interface Props {
+  content: FormElementType;
+}
+
+export default function SelectCountry({ content }: Props) {
   return (
     <div>
       <label htmlFor={content.name}>{content.label}</label>
