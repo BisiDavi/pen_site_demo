@@ -1,7 +1,8 @@
-import React from 'react'
-
-export default function Input() {
+export default function Input({ input }) {
   return (
-    <div>Input</div>
-  )
+    <div className="form-element">
+      <label>{input.label}</label>
+      <input name={input.name} type={input.contentType} />
+    </div>
+  );
 }

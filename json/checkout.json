@@ -1,0 +1,42 @@
+[
+  [
+    {
+      "label": "Full Name",
+      "type": "input",
+      "contentType": "text",
+      "name": "fullName"
+    },
+    {
+      "label": "Email",
+      "type": "input",
+      "contentType": "email",
+      "name": "email"
+    }
+  ],
+  [
+    {
+      "label": "Address",
+      "type": "input",
+      "contentType": "text",
+      "name": "address"
+    }
+  ],
+  [
+    {
+      "label": "Phone Number",
+      "type": "input",
+      "contentType": "text",
+      "name": "phoneNumber"
+    }
+  ],
+  [
+    { "label": "City", "type": "input", "contentType": "text", "name": "city" },
+    { "label": "State", "type": "input", "contentType": "text", "name": "state" },
+    {
+      "label": "Country",
+      "type": "select",
+      "contentType": "text",
+      "name": "country"
+    }
+  ]
+]
