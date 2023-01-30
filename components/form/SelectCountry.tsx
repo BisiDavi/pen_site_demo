@@ -34,6 +34,11 @@ export default function SelectCountry({ content }: Props) {
           .select select {
             height: 35px;
           }
+          .input p {
+            margin: 0px;
+            font-size: 14px;
+            color: red;
+          }
         `}
       </style>
     </>

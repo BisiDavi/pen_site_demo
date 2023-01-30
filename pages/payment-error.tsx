@@ -5,7 +5,6 @@ export default function PaymentError() {
   return (
     <Layout>
       <p className="error">
-        
         ❌ Error making payment <Link href="/">Continue Shopping</Link>
       </p>
 

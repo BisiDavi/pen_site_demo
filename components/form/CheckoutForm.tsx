@@ -15,9 +15,9 @@ export default function CheckoutForm() {
   const { cart } = useCartContext();
   const { makePayment } = useStripePayment();
 
-  function onSubmit(data: any) {
+  async function onSubmit(data: any) {
     console.log("data", data);
-    makePayment(data.email);
+    await makePayment(data.email);
   }
   const disableButton = cart.length > 0 ? false : true;
   return (

@@ -30,8 +30,9 @@ export default function useStripePayment() {
       ...emailAddress,
       line_items,
     };
+    console.log("result", result);
     return await axios
-      .post("/api/stripe-server", { ...result })
+      .post("/api/make-payment-stripe", { ...result })
       .then((response) => {
         console.log("response", response);
         window.location.href = response.data.session.url;
