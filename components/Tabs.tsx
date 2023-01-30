@@ -67,6 +67,8 @@ export default function Tabs({ tab1, tab2 }: Props) {
           .tabs li {
             display: flex;
             align-items: center;
+            padding: 5px 10px;
+            border-radius: 5px;
           }
 
           .tabs li:hover {

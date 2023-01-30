@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const adminProductSchema = yup.object({
+export const checkoutFormSchema = yup.object({
   fullName: yup.string().required("Full Name is required"),
   email: yup
     .string()

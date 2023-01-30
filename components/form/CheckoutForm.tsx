@@ -1,10 +1,22 @@
+import { useForm, FormProvider } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { checkoutFormSchema } from "@/components/form/checkoutform.schema";
 import displayForm from "@/components/form/displayForm";
 import checkoutFormContent from "@/json/checkout.json";
 
 export default function CheckoutForm() {
+  const methods = useForm({
+    resolver: yupResolver(checkoutFormSchema),
+    mode: "all",
+  });
+
+  function onSubmit(data) {
+    console.log("data", data);
+  }
   return (
-    <>
-      <form className="checkoutForm">
+    <FormProvider {...methods}>
+      <form className="checkoutForm" onSubmit={methods.handleSubmit(onSubmit)}>
         <div className="elements">
           {checkoutFormContent.map((formElementArr, index) => (
             <div
@@ -19,7 +31,9 @@ export default function CheckoutForm() {
             </div>
           ))}
         </div>
-        <button className="submit">Submit</button>
+        <button className="submit" type="submit">
+          Submit
+        </button>
       </form>
       <style jsx>
         {`
@@ -57,6 +71,6 @@ export default function CheckoutForm() {
           }
         `}
       </style>
-    </>
+    </FormProvider>
   );
 }

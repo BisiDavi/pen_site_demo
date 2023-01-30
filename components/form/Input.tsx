@@ -1,3 +1,4 @@
+import { useFormContext } from "react-hook-form";
 import type { formElementType } from "@/types";
 
 interface Props {
@@ -5,14 +6,21 @@ interface Props {
 }
 
 export default function Input({ content }: Props) {
+  const {
+    register,
+    formState: { errors },
+  }: any = useFormContext();
   return (
     <>
       <div className="input">
         <input
-          name={content.name}
           type={content.contentType}
           placeholder={content.label}
+          {...register(content.name)}
         />
+        <p className="text-red-500 p-0  text-xs">
+          {errors[content.name]?.message}
+        </p>
       </div>
       <style jsx>
         {`
