@@ -1,5 +1,6 @@
-import useCartContext from "@/hooks/useCartContext";
 import Image from "next/image";
+
+import useCartContext from "@/hooks/useCartContext";
 import Trash from "@/public/Trash";
 import useCart from "@/hooks/useCart";
 

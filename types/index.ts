@@ -17,3 +17,18 @@ export type cartContextType = {
   cart: Array<cartType>;
   setCart: Dispatch<SetStateAction<cartType[]>>;
 };
+
+export type addressType = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  city: string;
+  state: string;
+  country: string;
+};
+
+export type addressContextType = {
+  address: addressType;
+  setAddress: Dispatch<SetStateAction<addressType>>;
+};
